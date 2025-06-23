@@ -1,0 +1,33 @@
+type: object
+required:
+  - fullName
+  - email
+  - organizationId
+properties:
+  fullName:
+    type: string
+    example: John Doe
+  email:
+    type: string
+    format: email
+    example: john.doe@example.com
+  organizationId:
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+  bio:
+    type: string
+    example: Expert in strength training
+  phoneNumber:
+    type: string
+    example: "+1234567890"
+  specialization:
+    type: string
+    example: Strength Training
+  instagramHandle:
+    type: string
+    example: "@johnfit"
+  profilePictureUrl:
+    type: string
+    format: uri
+    example: "https://example.com/pic.jpg"

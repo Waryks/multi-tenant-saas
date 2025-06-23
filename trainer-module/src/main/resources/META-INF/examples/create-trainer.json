@@ -1,0 +1,10 @@
+{
+  "fullName": "John Doe",
+  "email": "john.doe@example.com",
+  "organizationId": "123e4567-e89b-12d3-a456-426614174000",
+  "bio": "Experienced coach",
+  "phoneNumber": "+1234567890",
+  "specialization": "Strength",
+  "instagramHandle": "@johnfit",
+  "profilePictureUrl": "https://example.com/image.jpg"
+}
