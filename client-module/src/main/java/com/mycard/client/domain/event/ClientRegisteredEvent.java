@@ -1,4 +1,5 @@
-package com.mycard.trainer.domain.event;
+package com.mycard.client.domain.event;
+
 
 import lombok.Getter;
 import messaging.DomainEvent;
@@ -7,19 +8,18 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Getter
-public class TrainerCreatedEvent implements DomainEvent {
+public class ClientRegisteredEvent implements DomainEvent {
 
+    private final UUID clientId;
     private final UUID trainerId;
-    private final UUID organizationId;
-    private final String email;
     private final Instant occurredAt;
 
-    public TrainerCreatedEvent(UUID trainerId, UUID organizationId, String email) {
+    public ClientRegisteredEvent(UUID clientId, UUID trainerId) {
+        this.clientId = clientId;
         this.trainerId = trainerId;
-        this.organizationId = organizationId;
-        this.email = email;
         this.occurredAt = Instant.now();
     }
+
     @Override
     public Instant occurredAt() {
         return occurredAt;
@@ -27,6 +27,6 @@ public class TrainerCreatedEvent implements DomainEvent {
 
     @Override
     public String eventName() {
-        return "trainer.created";
+        return "client.registered";
     }
 }

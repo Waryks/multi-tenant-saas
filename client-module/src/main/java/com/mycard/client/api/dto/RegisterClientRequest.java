@@ -1,4 +1,4 @@
-package com.mycard.trainer.api.dto;
+package com.mycard.client.api.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,10 +8,9 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-
 @Getter
 @Setter
-public class CreateTrainerRequest {
+public class RegisterClientRequest {
 
     @NotBlank
     private String fullName;
@@ -21,7 +20,8 @@ public class CreateTrainerRequest {
     private String email;
 
     @NotNull
-    private UUID organizationId;
+    private UUID trainerId;
 
-    private TrainerProfileDto profile;
+    @NotNull
+    private ClientProfileDto profile;
 }

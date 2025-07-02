@@ -1,12 +1,14 @@
 package com.mycard.trainer.application.service;
 
-import com.mycard.trainer.application.event.TrainerEventPublisher;
+import com.mycard.trainer.application.event.ITrainerEventPublisher;
+
 import com.mycard.trainer.domain.event.TrainerCreatedEvent;
 import com.mycard.trainer.domain.model.TrainerProfile;
+import com.mycard.trainer.infrastructure.messaging.TrainerEventPublisher;
 import com.mycard.trainer.infrastructure.persistence.TrainerRepository;
 import com.mycard.trainer.domain.model.Trainer;
 import com.mycard.trainer.infrastructure.persistence.TrainerEntity;
-import com.mycard.trainer.infrastructure.persistence.TrainerMapper;
+import com.mycard.trainer.infrastructure.persistence.mapper.TrainerMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.jboss.logging.Logger;
@@ -20,7 +22,7 @@ public class TrainerService {
     private static final Logger LOG = Logger.getLogger(TrainerService.class);
 
     private final TrainerRepository repository;
-    private final TrainerEventPublisher eventPublisher;
+    private final ITrainerEventPublisher eventPublisher;
     private final TrainerMapper mapper;
 
     @Inject
@@ -32,7 +34,7 @@ public class TrainerService {
         this.mapper = mapper;
     }
 
-    public UUID createTrainer(CreateTrainerCommand command) {
+    public Trainer createTrainer(CreateTrainerCommand command) {
         LOG.infof("Creating trainer for email: %s", command.getEmail());
 
         TrainerProfile profile = new TrainerProfile(
@@ -64,7 +66,7 @@ public class TrainerService {
 
         LOG.infof("Published TrainerCreatedEvent for ID: %s", trainer.getId());
 
-        return trainer.getId();
+        return trainer;
     }
 
     public Optional<Trainer> findById(UUID id) {

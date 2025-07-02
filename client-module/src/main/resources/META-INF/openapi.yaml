@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Client API
+  version: "1.0"
+paths:
+  /clients:
+    post:
+      summary: Register a new client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/CreateClientRequest.yaml'
+            examples:
+              create-client:
+                summary: Valid registration payload
+                value:
+                  fullName: Jane Smith
+                  email: jane.smith@example.com
+                  trainerId: 123e4567-e89b-12d3-a456-426614174000
+                  profile:
+                    age: 28
+                    heightCm: 165.5
+                    weightKg: 60.2
+                    goalDescription: Build lean muscle and improve endurance
+      responses:
+        '201':
+          description: Client created
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/ClientDTO.yaml'
+              examples:
+                client-example:
+                  summary: Sample returned client
+                  value:
+                    id: dca3bfa7-7e14-4b7b-9a71-f233456a1234
+                    fullName: Jane Smith
+                    email: jane.smith@example.com
+                    trainerId: 123e4567-e89b-12d3-a456-426614174000
+                    profile:
+                      age: 28
+                      heightCm: 165.5
+                      weightKg: 60.2
+                      goalDescription: Build lean muscle and improve endurance
+        '400':
+          description: Invalid input
+  /clients/{id}:
+    get:
+      summary: Get client by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Client found
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/ClientDTO.yaml'
+              examples:
+                client-example:
+                  summary: Sample returned client
+                  value:
+                    id: dca3bfa7-7e14-4b7b-9a71-f233456a1234
+                    fullName: Jane Smith
+                    email: jane.smith@example.com
+                    trainerId: 123e4567-e89b-12d3-a456-426614174000
+                    profile:
+                      age: 28
+                      heightCm: 165.5
+                      weightKg: 60.2
+                      goalDescription: Build lean muscle and improve endurance
+        '404':
+          description: Client not found
+components: {}

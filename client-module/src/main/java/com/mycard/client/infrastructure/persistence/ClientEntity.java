@@ -1,4 +1,4 @@
-package com.mycard.trainer.infrastructure.persistence;
+package com.mycard.client.infrastructure.persistence;
 
 import base.BaseEntity;
 import jakarta.persistence.Column;
@@ -13,12 +13,12 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Entity
-@Table(name = "trainers")
+@Table(name = "clients")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainerEntity extends BaseEntity {
+public class ClientEntity extends BaseEntity {
 
     @Column(nullable = false)
     private String fullName;
@@ -27,8 +27,8 @@ public class TrainerEntity extends BaseEntity {
     private String email;
 
     @Column(nullable = false)
-    private UUID organizationId;
+    private UUID trainerId;
 
     @Embedded
-    private EmbeddedTrainerProfile profile;
+    private EmbeddedClientProfile profile;
 }
