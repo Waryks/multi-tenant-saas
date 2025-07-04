@@ -3,7 +3,7 @@ package com.mycard.trainer.api.mapper;
 import com.mycard.trainer.api.dto.CreateTrainerRequest;
 import com.mycard.trainer.api.dto.TrainerDTO;
 
-import com.mycard.trainer.application.service.CreateTrainerCommand;
+import com.mycard.trainer.application.command.CreateTrainerCommand;
 import com.mycard.trainer.domain.model.Trainer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

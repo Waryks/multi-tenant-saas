@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: Workout API
+  version: "1.0"
+paths:
+  /workouts:
+    post:
+      summary: Assign a workout to a client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/AssignWorkoutRequest.yaml'
+            examples:
+              example:
+                summary: Example workout assignment
+                value:
+                  trainerId: "123e4567-e89b-12d3-a456-426614174001"
+                  clientId: "123e4567-e89b-12d3-a456-426614174002"
+                  title: "Push Day Workout"
+                  description: "Upper body strength training"
+                  scheduledDate: "2025-07-04"
+                  exercises:
+                    - name: "Bench Press"
+                      sets: 4
+                      reps: 8
+                      restSeconds: 90
+                      notes: "Use spotter"
+                    - name: "Incline Dumbbell Press"
+                      sets: 3
+                      reps: 10
+                      restSeconds: 60
+      responses:
+        '201':
+          description: Workout assigned successfully
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/WorkoutDTO.yaml'
+  /workouts/{id}:
+    get:
+      summary: Get workout by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Workout found
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/WorkoutDTO.yaml'
+        '404':
+          description: Workout not found
+  /workouts/clients/{clientId}:
+    get:
+      summary: Get all workouts for a client
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of workouts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './schemas/WorkoutDTO.yaml'
+
+components: {}

@@ -15,6 +15,7 @@
         <module>client-module</module>
         <module>shared</module>
         <module>integration-tests</module>
+        <module>nutrition-module</module>
     </modules>
 
     <properties>

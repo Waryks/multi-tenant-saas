@@ -16,7 +16,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <openapi.spec.path>${project.basedir}/src/main/resources/META-INF/openapi.yaml</openapi.spec.path>
+        <openapi.spec.path>${project.basedir}/src/main/resources/META-INF/openapi/openapi.yaml</openapi.spec.path>
     </properties>
 
     <dependencies>

@@ -1,0 +1,26 @@
+type: object
+required:
+  - trainerId
+  - clientId
+  - title
+  - exercises
+properties:
+  trainerId:
+    type: string
+    format: uuid
+  clientId:
+    type: string
+    format: uuid
+  title:
+    type: string
+    example: Push Day
+  description:
+    type: string
+    example: Upper body strength session
+  scheduledDate:
+    type: string
+    format: date
+  exercises:
+    type: array
+    items:
+      $ref: './ExerciseDTO.yaml'

@@ -13,5 +13,5 @@ public class ClientDTO {
     private String fullName;
     private String email;
     private UUID trainerId;
-    private ClientProfileDto profile;
+    private ClientProfileDTO profile;
 }

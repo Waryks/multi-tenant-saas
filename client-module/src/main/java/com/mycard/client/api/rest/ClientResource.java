@@ -4,7 +4,7 @@ package com.mycard.client.api.rest;
 import com.mycard.client.api.dto.RegisterClientRequest;
 import com.mycard.client.api.mapper.ClientResourceMapper;
 import com.mycard.client.application.service.ClientService;
-import com.mycard.client.application.service.RegisterClientCommand;
+import com.mycard.client.application.command.RegisterClientCommand;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Nutrition API
+  version: "1.0"
+
+paths:
+  /nutrition-plans:
+    post:
+      summary: Assign a nutrition plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/AssignNutritionPlanRequest.yaml'
+            example:
+              trainerId: "b1b4567e-e123-43cb-b89c-df5f12345678"
+              clientId: "a1a4567e-e123-43cb-b89c-df5f12345678"
+              title: "Weight Loss Meal Plan"
+              notes: "Low carb, high protein."
+              startDate: "2025-07-01"
+              endDate: "2025-07-14"
+              meals:
+                - name: "Oatmeal with Berries"
+                  timeOfDay: "BREAKFAST"
+                  description: "Oats, berries, protein powder"
+                  calories: 350
+                  proteinGrams: 25
+                  carbsGrams: 40
+                  fatGrams: 10
+
+      responses:
+        '201':
+          description: Nutrition plan created
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/NutritionPlanDto.yaml'
+              example:
+                id: "c2c4567e-e123-43cb-b89c-df5f12345678"
+                trainerId: "b1b4567e-e123-43cb-b89c-df5f12345678"
+                clientId: "a1a4567e-e123-43cb-b89c-df5f12345678"
+                title: "Weight Loss Meal Plan"
+                notes: "Low carb, high protein."
+                startDate: "2025-07-01"
+                endDate: "2025-07-14"
+                meals:
+                  - name: "Oatmeal with Berries"
+                    timeOfDay: "BREAKFAST"
+                    description: "Oats, berries, protein powder"
+                    calories: 350
+                    proteinGrams: 25
+                    carbsGrams: 40
+                    fatGrams: 10
+
+  /nutrition-plans/{id}:
+    get:
+      summary: Get nutrition plan by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Nutrition plan found
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/NutritionPlanDto.yaml'
+              example:
+                id: "c2c4567e-e123-43cb-b89c-df5f12345678"
+                trainerId: "b1b4567e-e123-43cb-b89c-df5f12345678"
+                clientId: "a1a4567e-e123-43cb-b89c-df5f12345678"
+                title: "Weight Loss Meal Plan"
+                notes: "Low carb, high protein."
+                startDate: "2025-07-01"
+                endDate: "2025-07-14"
+                meals:
+                  - name: "Oatmeal with Berries"
+                    timeOfDay: "BREAKFAST"
+                    description: "Oats, berries, protein powder"
+                    calories: 350
+                    proteinGrams: 25
+                    carbsGrams: 40
+                    fatGrams: 10
+        '404':
+          description: Nutrition plan not found

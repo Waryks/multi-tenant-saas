@@ -2,7 +2,7 @@ package com.mycard.client.api.mapper;
 
 import com.mycard.client.api.dto.ClientDTO;
 import com.mycard.client.api.dto.RegisterClientRequest;
-import com.mycard.client.application.service.RegisterClientCommand;
+import com.mycard.client.application.command.RegisterClientCommand;
 import com.mycard.client.domain.model.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

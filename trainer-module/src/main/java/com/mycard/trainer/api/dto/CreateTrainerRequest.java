@@ -23,5 +23,5 @@ public class CreateTrainerRequest {
     @NotNull
     private UUID organizationId;
 
-    private TrainerProfileDto profile;
+    private TrainerProfileDTO profile;
 }

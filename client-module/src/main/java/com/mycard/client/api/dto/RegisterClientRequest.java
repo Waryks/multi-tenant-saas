@@ -23,5 +23,5 @@ public class RegisterClientRequest {
     private UUID trainerId;
 
     @NotNull
-    private ClientProfileDto profile;
+    private ClientProfileDTO profile;
 }

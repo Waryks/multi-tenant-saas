@@ -1,0 +1,18 @@
+type: object
+required: [name, timeOfDay, calories]
+properties:
+  name:
+    type: string
+  timeOfDay:
+    type: string
+    enum: [BREAKFAST, LUNCH, DINNER, SNACK, PRE_WORKOUT, POST_WORKOUT]
+  description:
+    type: string
+  calories:
+    type: integer
+  proteinGrams:
+    type: integer
+  carbsGrams:
+    type: integer
+  fatGrams:
+    type: integer

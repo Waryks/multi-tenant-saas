@@ -1,5 +1,6 @@
 package com.mycard.trainer.application.service;
 
+import com.mycard.trainer.application.command.CreateTrainerCommand;
 import com.mycard.trainer.application.event.ITrainerEventPublisher;
 
 import com.mycard.trainer.domain.event.TrainerCreatedEvent;

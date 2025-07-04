@@ -1,5 +1,6 @@
 package com.mycard.client.application.service;
 
+import com.mycard.client.application.command.RegisterClientCommand;
 import com.mycard.client.application.event.IClientEventPublisher;
 import com.mycard.client.domain.event.ClientRegisteredEvent;
 import com.mycard.client.domain.model.Client;

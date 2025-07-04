@@ -3,7 +3,7 @@ package com.mycard.trainer.api.rest;
 import com.mycard.trainer.api.dto.CreateTrainerRequest;
 import com.mycard.trainer.api.dto.TrainerDTO;
 import com.mycard.trainer.api.mapper.TrainerResourceMapper;
-import com.mycard.trainer.application.service.CreateTrainerCommand;
+import com.mycard.trainer.application.command.CreateTrainerCommand;
 import com.mycard.trainer.application.service.TrainerService;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

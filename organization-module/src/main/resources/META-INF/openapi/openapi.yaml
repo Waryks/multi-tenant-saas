@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Organization API
+  version: "1.0"
+paths:
+  /organizations:
+    post:
+      summary: Create a new organization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/CreateOrganizationRequest.yaml'
+            examples:
+              example:
+                summary: Sample organization creation
+                value:
+                  name: My Fit Gym
+                  contactEmail: contact@myfitgym.com
+                  phoneNumber: "+1234567890"
+                  address: "123 Main Street, City"
+                  logoUrl: "https://example.com/logo.png"
+                  website: "https://myfitgym.com"
+                  description: "Premium fitness center with personal trainers."
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/OrganizationDTO.yaml'
+              examples:
+                example:
+                  summary: Created organization
+                  value:
+                    id: d290f1ee-6c54-4b01-90e6-d701748f0851
+                    name: My Fit Gym
+                    contactEmail: contact@myfitgym.com
+                    phoneNumber: "+1234567890"
+                    address: "123 Main Street, City"
+                    logoUrl: "https://example.com/logo.png"
+                    website: "https://myfitgym.com"
+                    description: "Premium fitness center with personal trainers."
+        '400':
+          description: Invalid input
+
+  /organizations/{id}:
+    get:
+      summary: Get organization by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Organization found
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/OrganizationDTO.yaml'
+              examples:
+                example:
+                  summary: Organization data
+                  value:
+                    id: d290f1ee-6c54-4b01-90e6-d701748f0851
+                    name: My Fit Gym
+                    contactEmail: contact@myfitgym.com
+                    phoneNumber: "+1234567890"
+                    address: "123 Main Street, City"
+                    logoUrl: "https://example.com/logo.png"
+                    website: "https://myfitgym.com"
+                    description: "Premium fitness center with personal trainers."
+        '404':
+          description: Not found

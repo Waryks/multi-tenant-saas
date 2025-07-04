@@ -1,0 +1,28 @@
+type: object
+required:
+  - trainerId
+  - clientId
+  - title
+  - startDate
+  - endDate
+properties:
+  trainerId:
+    type: string
+    format: uuid
+  clientId:
+    type: string
+    format: uuid
+  title:
+    type: string
+  notes:
+    type: string
+  startDate:
+    type: string
+    format: date
+  endDate:
+    type: string
+    format: date
+  meals:
+    type: array
+    items:
+      $ref: './Meal.yaml'
