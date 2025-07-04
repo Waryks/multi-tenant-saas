@@ -1,0 +1,11 @@
+{
+  "fullName": "Jane Smith",
+  "email": "jane.smith@example.com",
+  "trainerId": "123e4567-e89b-12d3-a456-426614174000",
+  "profile": {
+    "age": 28,
+    "heightCm": 165.5,
+    "weightKg": 60.2,
+    "goalDescription": "Build lean muscle and improve endurance"
+  }
+}

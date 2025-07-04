@@ -1,0 +1,20 @@
+type: object
+required:
+  - fullName
+  - email
+  - trainerId
+  - profile
+properties:
+  fullName:
+    type: string
+    example: Jane Smith
+  email:
+    type: string
+    format: email
+    example: jane.smith@example.com
+  trainerId:
+    type: string
+    format: uuid
+    example: 123e4567-e89b-12d3-a456-426614174000
+  profile:
+    $ref: './ClientProfileDTO.yaml'

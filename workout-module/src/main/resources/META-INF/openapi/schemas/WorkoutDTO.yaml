@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  trainerId:
+    type: string
+    format: uuid
+  clientId:
+    type: string
+    format: uuid
+  title:
+    type: string
+  description:
+    type: string
+  scheduledDate:
+    type: string
+    format: date
+  exercises:
+    type: array
+    items:
+      $ref: './ExerciseDTO.yaml'

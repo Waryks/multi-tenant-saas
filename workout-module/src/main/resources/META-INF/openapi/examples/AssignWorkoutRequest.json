@@ -1,0 +1,23 @@
+{
+  "trainerId": "123e4567-e89b-12d3-a456-426614174001",
+  "clientId": "123e4567-e89b-12d3-a456-426614174002",
+  "title": "Push Day Workout",
+  "description": "Upper body strength training focused on chest, shoulders, and triceps.",
+  "scheduledDate": "2025-07-04",
+  "exercises": [
+    {
+      "name": "Bench Press",
+      "sets": 4,
+      "reps": 8,
+      "restSeconds": 90,
+      "notes": "Use spotter"
+    },
+    {
+      "name": "Incline Dumbbell Press",
+      "sets": 3,
+      "reps": 10,
+      "restSeconds": 60,
+      "notes": "Focus on form"
+    }
+  ]
+}

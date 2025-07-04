@@ -1,0 +1,19 @@
+{
+  "trainerId": "b1b4567e-e123-43cb-b89c-df5f12345678",
+  "clientId": "a1a4567e-e123-43cb-b89c-df5f12345678",
+  "title": "Weight Loss Meal Plan",
+  "notes": "Low carb, high protein.",
+  "startDate": "2025-07-01",
+  "endDate": "2025-07-14",
+  "meals": [
+    {
+      "name": "Oatmeal with Berries",
+      "timeOfDay": "BREAKFAST",
+      "description": "Oats, berries, protein powder",
+      "calories": 350,
+      "proteinGrams": 25,
+      "carbsGrams": 40,
+      "fatGrams": 10
+    }
+  ]
+}

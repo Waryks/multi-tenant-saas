@@ -1,0 +1,10 @@
+{
+  "id": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+  "name": "My Fit Gym",
+  "contactEmail": "contact@myfitgym.com",
+  "phoneNumber": "+1234567890",
+  "address": "123 Main Street, City",
+  "logoUrl": "https://example.com/logo.png",
+  "website": "https://myfitgym.com",
+  "description": "Premium fitness center with personal trainers."
+}

@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: Trainer API
+  version: "1.0"
+paths:
+  /trainers:
+    post:
+      summary: Create a new trainer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/CreateTrainerRequest.yaml'
+      responses:
+        '201':
+          description: Trainer created
+  /trainer/{id}:
+    get:
+      summary: Get trainer by ID
+      responses:
+        '200':
+          description: Trainer found
+          content:
+            application/json:
+              schema:
+                $ref: './schemas/TrainerDTO.yaml'
+components: {}

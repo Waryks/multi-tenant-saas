@@ -1,0 +1,22 @@
+type: object
+required:
+  - name
+  - sets
+  - reps
+  - restSeconds
+properties:
+  name:
+    type: string
+    example: Bench Press
+  sets:
+    type: integer
+    example: 4
+  reps:
+    type: integer
+    example: 10
+  restSeconds:
+    type: integer
+    example: 90
+  notes:
+    type: string
+    example: Use a spotter on last set
