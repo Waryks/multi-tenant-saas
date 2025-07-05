@@ -13,6 +13,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.jboss.logging.Logger;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -62,6 +63,13 @@ public class ClientService {
 
     public Optional<Client> findById(UUID id) {
         return repository.findByIdOptional(id).map(mapper::toDomain);
+    }
+
+    public List<Client> findByTrainerId(UUID trainerId) {
+        return repository.find("trainerId", trainerId).list()
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
     }
 
     public boolean updateClient(UUID id, RegisterClientCommand command) {

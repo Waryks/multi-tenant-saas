@@ -1,5 +1,7 @@
 package com.mycard.trainer.api.rest;
 
+import com.mycard.trainer.acl.ClientServiceClient;
+import com.mycard.trainer.acl.dto.ClientDTO;
 import com.mycard.trainer.api.dto.CreateTrainerRequest;
 import com.mycard.trainer.api.dto.TrainerDTO;
 import com.mycard.trainer.api.mapper.TrainerResourceMapper;
@@ -13,8 +15,10 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @Tag(name = "Trainer", description = "Trainer management operations")
@@ -28,6 +32,10 @@ public class TrainerResource {
 
     @Inject
     TrainerResourceMapper mapper;
+
+    @Inject
+    @RestClient
+    ClientServiceClient clientServiceClient;
 
     @POST
     @Operation(summary = "Create a new trainer")
@@ -50,6 +58,21 @@ public class TrainerResource {
         return trainerService.findById(id)
                 .map(trainer -> Response.ok(mapper.toDto(trainer)).build())
                 .orElse(Response.status(Response.Status.NOT_FOUND).build());
+    }
+
+    @GET
+    @Path("/{trainerId}/clients")
+    @Operation(summary = "Get list of clients for a trainer")
+    @APIResponse(responseCode = "200", description = "List of clients")
+    @APIResponse(responseCode = "404", description = "No clients found")
+    public Response getClients(@PathParam("trainerId") UUID trainerId) {
+        List<ClientDTO> clients = clientServiceClient.getClientsByTrainer(trainerId);
+
+        if (clients.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.ok(clients).build();
     }
 }
 

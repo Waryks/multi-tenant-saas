@@ -1,17 +1,22 @@
 package com.mycard.client.api.rest;
 
 
+import com.mycard.client.api.dto.ClientDTO;
 import com.mycard.client.api.dto.RegisterClientRequest;
 import com.mycard.client.api.mapper.ClientResourceMapper;
 import com.mycard.client.application.service.ClientService;
 import com.mycard.client.application.command.RegisterClientCommand;
+import com.mycard.client.domain.model.Client;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
+import java.util.List;
 import java.util.UUID;
 
 @Path("/clients")
@@ -67,5 +72,21 @@ public class ClientResource {
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
+    }
+
+    @GET
+    @Path("/by-trainer/{trainerId}")
+    @Operation(summary = "Get all clients by trainer ID")
+    @APIResponse(responseCode = "200", description = "Clients found")
+    @APIResponse(responseCode = "404", description = "No clients found")
+    public Response getClientsByTrainer(@PathParam("trainerId") UUID trainerId) {
+        List<Client> clients = clientService.findByTrainerId(trainerId);
+
+        if (clients.isEmpty()) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        List<ClientDTO> response = clients.stream().map(mapper::toDto).toList();
+        return Response.ok(response).build();
     }
 }
