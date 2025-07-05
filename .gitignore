@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+**/resources/keys/privateKey.pem
+**/resources/keys/publicKey.pem

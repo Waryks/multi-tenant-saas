@@ -1,0 +1,13 @@
+type: object
+required:
+  - trainerId
+  - email
+properties:
+  trainerId:
+    type: string
+    format: uuid
+    example: "c234ef01-32f9-44ba-9a5f-71bbd1056a1e"
+  email:
+    type: string
+    format: email
+    example: "jane.doe@example.com"

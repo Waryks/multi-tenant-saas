@@ -1,0 +1,28 @@
+type: object
+required:
+  - fullName
+  - profile
+properties:
+  fullName:
+    type: string
+    example: Jane Smith
+  profile:
+    type: object
+    required:
+      - age
+      - heightCm
+      - weightKg
+    properties:
+      age:
+        type: integer
+        minimum: 12
+        example: 30
+      heightCm:
+        type: number
+        example: 165
+      weightKg:
+        type: number
+        example: 60
+      goalDescription:
+        type: string
+        example: "Lose weight and gain strength"
