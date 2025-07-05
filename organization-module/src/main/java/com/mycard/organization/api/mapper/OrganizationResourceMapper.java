@@ -6,8 +6,9 @@ import com.mycard.organization.application.command.CreateOrganizationCommand;
 import com.mycard.organization.domain.model.Organization;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "cdi", uses = OrganizationProfileMapper.class)
+@Mapper(componentModel = "cdi", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface OrganizationResourceMapper {
 
     @Mapping(target = "phoneNumber", source = "profile.phoneNumber")
