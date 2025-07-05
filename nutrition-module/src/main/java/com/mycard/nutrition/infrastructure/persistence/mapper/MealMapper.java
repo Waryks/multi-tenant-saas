@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "cdi")
 public interface MealMapper {
 
-    List<Meal> toDomain(List<MealEmbeddable> embedded);
-
+    List<Meal> toDomains(List<MealEmbeddable> embedded);
+    Meal toDomain(MealEmbeddable embeddable);
     List<MealEmbeddable> toEntity(List<Meal> domain);
 }
