@@ -30,7 +30,7 @@ public class ClientResource {
     ClientResourceMapper mapper;
     @POST
     @Transactional
-    public Response registerClient(@Valid RegisterClientRequest request) {
+    public Response registerClient(@Valid RegisterClientRequest request) { // only for testing
         RegisterClientCommand command = mapper.toCommand(request);
         UUID clientId = clientService.registerClient(command);
 
