@@ -1,0 +1,27 @@
+type: object
+required:
+  - fullName
+  - age
+  - heightCm
+  - weightKg
+properties:
+  fullName:
+    type: string
+    example: "John Doe"
+  age:
+    type: integer
+    minimum: 12
+    example: 25
+  heightCm:
+    type: number
+    format: float
+    minimum: 0
+    example: 175.5
+  weightKg:
+    type: number
+    format: float
+    minimum: 0
+    example: 70.2
+  goalDescription:
+    type: string
+    example: "Build muscle and improve endurance"

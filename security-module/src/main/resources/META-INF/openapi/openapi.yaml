@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Security Module API
+  version: "1.0"
+paths:
+  /auth/invite-client:
+    post:
+      summary: Invite a client to register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/InviteClientRequest.yaml'
+      responses:
+        '201':
+          description: Invitation created
+  /auth/accept-invite:
+    post:
+      summary: Register a client using an invitation token
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './schemas/RegisterClientRequest.yaml'
+      responses:
+        '200':
+          description: Client registered successfully
+components: {}
