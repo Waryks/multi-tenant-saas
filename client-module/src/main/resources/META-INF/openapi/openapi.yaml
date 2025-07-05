@@ -78,4 +78,25 @@ paths:
                       goalDescription: Build lean muscle and improve endurance
         '404':
           description: Client not found
+  /clients/by-trainer/{trainerId}:
+    get:
+      summary: List all clients by trainer ID
+      parameters:
+        - name: trainerId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Clients list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './schemas/ClientDTO.yaml'
+        '404':
+          description: No clients found
 components: {}

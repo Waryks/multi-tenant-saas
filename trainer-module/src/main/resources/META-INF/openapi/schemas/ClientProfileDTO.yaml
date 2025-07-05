@@ -1,0 +1,21 @@
+type: object
+required:
+  - age
+  - heightCm
+  - weightKg
+  - goalDescription
+properties:
+  age:
+    type: integer
+    example: 28
+  heightCm:
+    type: number
+    format: float
+    example: 165.5
+  weightKg:
+    type: number
+    format: float
+    example: 60.2
+  goalDescription:
+    type: string
+    example: "Build lean muscle and improve endurance"
