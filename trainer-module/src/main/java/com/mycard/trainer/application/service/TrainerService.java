@@ -12,6 +12,7 @@ import com.mycard.trainer.infrastructure.persistence.TrainerEntity;
 import com.mycard.trainer.infrastructure.persistence.mapper.TrainerMapper;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import org.jboss.logging.Logger;
 
 import java.util.Optional;
@@ -28,13 +29,14 @@ public class TrainerService {
 
     @Inject
     public TrainerService(TrainerRepository repository,
-                          TrainerEventPublisher eventPublisher,
+                          ITrainerEventPublisher eventPublisher,
                           TrainerMapper mapper) {
         this.repository = repository;
         this.eventPublisher = eventPublisher;
         this.mapper = mapper;
     }
 
+    @Transactional
     public Trainer createTrainer(CreateTrainerCommand command) {
         LOG.infof("Creating trainer for email: %s", command.getEmail());
 
