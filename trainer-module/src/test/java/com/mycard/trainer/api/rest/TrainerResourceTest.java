@@ -73,4 +73,65 @@ class TrainerResourceTest {
                 .body("[0].fullName", equalTo("Jane Client"))
                 .body("[0].email", equalTo("jane@client.com"));
     }
+
+    @Test
+    void testCreateTrainer_MissingFields_ShouldReturn400() {
+        CreateTrainerRequest request = new CreateTrainerRequest();
+        given()
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post("/trainers")
+                .then()
+                .statusCode(400);
+    }
+
+    @Test
+    void testCreateTrainer_InvalidEmail_ShouldReturn400() {
+        CreateTrainerRequest request = new CreateTrainerRequest();
+        request.setFullName("Invalid Email");
+        request.setEmail("not-an-email");
+        request.setOrganizationId(UUID.randomUUID());
+        given()
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post("/trainers")
+                .then()
+                .statusCode(400);
+    }
+
+    @Test
+    void testGetTrainerById_NotFound_ShouldReturn404() {
+        UUID nonExistentId = UUID.randomUUID();
+        given()
+                .when()
+                .get("/trainers/" + nonExistentId)
+                .then()
+                .statusCode(404);
+    }
+
+    @Test
+    void testGetClientsByTrainer_EmptyList_ShouldReturn404() {
+        UUID trainerId = UUID.randomUUID();
+        org.mockito.Mockito.when(clientServiceClient.getClientsByTrainer(trainerId))
+                .thenReturn(List.of());
+        given()
+                .when()
+                .get("/trainers/" + trainerId + "/clients")
+                .then()
+                .statusCode(404);
+    }
+
+    @Test
+    void testGetClientsByTrainer_AclClientThrows_ShouldReturn500() {
+        UUID trainerId = UUID.randomUUID();
+        org.mockito.Mockito.when(clientServiceClient.getClientsByTrainer(trainerId))
+                .thenThrow(new RuntimeException("ACL error"));
+        given()
+                .when()
+                .get("/trainers/" + trainerId + "/clients")
+                .then()
+                .statusCode(500);
+    }
 }

@@ -1,6 +1,5 @@
 package com.mycard.security.application.service;
 
-import com.mycard.security.acl.client.ClientRegistrationClient;
 import com.mycard.security.application.command.InviteClientCommand;
 import com.mycard.security.application.event.IClientInviteEventPublisher;
 import com.mycard.security.domain.event.ClientInvitedEvent;

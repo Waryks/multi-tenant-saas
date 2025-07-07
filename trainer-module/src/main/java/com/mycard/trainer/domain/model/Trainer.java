@@ -1,6 +1,5 @@
 package com.mycard.trainer.domain.model;
 
-import base.BaseEntity;
 import lombok.*;
 
 import java.util.UUID;
@@ -8,9 +7,8 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Trainer extends BaseEntity {
-
+public class Trainer {
+    private UUID id;
     private String fullName;
     private String email;
     private TrainerProfile profile;

@@ -48,7 +48,7 @@ class TrainerServiceTest {
                 "pic.jpg"
         );
 
-        Trainer trainer = new Trainer(command.getFullName(), command.getEmail(),
+        Trainer trainer = new Trainer(UUID.randomUUID(), command.getFullName(), command.getEmail(),
                 new TrainerProfile(command.getBio(), command.getPhoneNumber(),
                         command.getSpecialization(), command.getInstagramHandle(),
                         command.getProfilePictureUrl()),

@@ -44,7 +44,7 @@ class TrainerServiceComponentTest {
                 "Bio", "12345", "Strength", "@john", "pic.jpg"
         );
 
-        var trainer = new Trainer(command.getFullName(), command.getEmail(), null, orgId);
+        var trainer = new Trainer(UUID.randomUUID(), command.getFullName(), command.getEmail(), null, orgId);
 
         when(mapper.toEntity(any())).thenReturn(null);
         when(mapper.toDomain(any())).thenReturn(trainer);

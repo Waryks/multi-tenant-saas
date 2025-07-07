@@ -5,7 +5,6 @@ import com.mycard.trainer.application.event.ITrainerEventPublisher;
 
 import com.mycard.trainer.domain.event.TrainerCreatedEvent;
 import com.mycard.trainer.domain.model.TrainerProfile;
-import com.mycard.trainer.infrastructure.messaging.TrainerEventPublisher;
 import com.mycard.trainer.infrastructure.persistence.TrainerRepository;
 import com.mycard.trainer.domain.model.Trainer;
 import com.mycard.trainer.infrastructure.persistence.TrainerEntity;
@@ -49,6 +48,7 @@ public class TrainerService {
         );
 
         Trainer trainer = new Trainer(
+                UUID.randomUUID(),
                 command.getFullName(),
                 command.getEmail(),
                 profile,

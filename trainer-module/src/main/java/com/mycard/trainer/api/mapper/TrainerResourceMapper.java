@@ -22,5 +22,12 @@ public interface TrainerResourceMapper {
     })
     CreateTrainerCommand toCommand(CreateTrainerRequest request);
 
+    @Mappings({
+        @Mapping(source = "profile.bio", target = "bio"),
+        @Mapping(source = "profile.phoneNumber", target = "phoneNumber"),
+        @Mapping(source = "profile.specialization", target = "specialization"),
+        @Mapping(source = "profile.instagramHandle", target = "instagramHandle"),
+        @Mapping(source = "profile.profilePictureUrl", target = "profilePictureUrl")
+    })
     TrainerDTO toDto(Trainer trainer);
 }

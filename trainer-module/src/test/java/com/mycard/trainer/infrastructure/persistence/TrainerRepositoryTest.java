@@ -26,6 +26,7 @@ class TrainerRepositoryTest {
     @Transactional
     void shouldPersistAndRetrieveTrainer() {
         Trainer trainer = new Trainer(
+                UUID.randomUUID(),
                 "Jane Smith",
                 "jane@mycard.io",
                 new TrainerProfile("Experienced", "555-1234", "Strength", "@janefit", "jane.jpg"),
