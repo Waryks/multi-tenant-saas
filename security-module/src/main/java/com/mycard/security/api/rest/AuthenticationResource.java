@@ -5,7 +5,6 @@ import com.mycard.security.api.dto.RegisterClientRequest;
 import com.mycard.security.api.mapper.InviteResourceMapper;
 import com.mycard.security.application.service.InvitationService;
 import com.mycard.security.application.service.RegistrationService;
-import io.smallrye.jwt.auth.principal.ParseException;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -21,7 +20,7 @@ import java.util.UUID;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Tag(name = "Authentication", description = "Security-related operations")
-public class RegistrationResource {
+public class AuthenticationResource {
 
     @Inject
     InvitationService invitationService;
@@ -43,7 +42,7 @@ public class RegistrationResource {
     @POST
     @Path("/accept-invite")
     @Operation(summary = "Accept client invitation and register")
-    public Response acceptInvite(@QueryParam("token") String token, @Valid RegisterClientRequest request) throws ParseException {
+    public Response acceptInvite(@HeaderParam("X-Invite-Token") String token, @Valid RegisterClientRequest request) {
         registrationService.registerClientFromToken(token, request);
         return Response.ok().build();
     }

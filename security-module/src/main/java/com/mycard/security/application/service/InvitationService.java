@@ -8,6 +8,7 @@ import com.mycard.security.infrastructure.persistence.InviteRepository;
 import com.mycard.security.infrastructure.persistence.PendingInviteEntity;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class InvitationService {
         this.jwtService = jwtService;
     }
 
+    @Transactional
     public UUID inviteClient(InviteClientCommand command) {
         if (repository.existsActiveInvite(command.getEmail(), command.getTrainerId())) {
             throw new IllegalArgumentException("Client already invited and not yet accepted.");
@@ -45,8 +47,7 @@ public class InvitationService {
                 false
         );
 
-        repository.persist(entity);
-        repository.flush();
+        repository.persistAndFlush(entity);
 
         UUID inviteId = entity.getId();
 

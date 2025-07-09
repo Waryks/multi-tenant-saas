@@ -39,3 +39,7 @@ build/
 
 **/resources/keys/privateKey.pem
 **/resources/keys/publicKey.pem
+
+# Ignore JWT key files for all modules
+**/META-INF/keys/privateKey.pem
+**/META-INF/keys/publicKey.pem

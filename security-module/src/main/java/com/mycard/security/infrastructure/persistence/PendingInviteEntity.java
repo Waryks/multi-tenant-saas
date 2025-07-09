@@ -21,7 +21,7 @@ public class PendingInviteEntity extends BaseEntity {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 1024)
     private String token;
 
     @Column(nullable = false)

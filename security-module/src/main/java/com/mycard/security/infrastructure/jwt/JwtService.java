@@ -7,6 +7,7 @@ import io.smallrye.jwt.auth.principal.JWTParser;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -30,6 +31,7 @@ public class JwtService {
                         "trainerId", trainerId.toString(),
                         "email", email
                 ))
+                .subject(email)
                 .issuer("https://mycard.io")
                 .audience("client-invite")
                 .issuedAt(now)
@@ -38,11 +40,13 @@ public class JwtService {
     }
 
     public JwtInviteClaims parseInviteToken(String token) throws ParseException {
-        var jwt = jwtParser.parse(token);
+        JsonWebToken parsedToken = jwtParser.parse(token);
+
+        String trainerId = parsedToken.getClaim("trainerId");
 
         return new JwtInviteClaims(
-                UUID.fromString(jwt.getClaim("trainerId")),
-                jwt.getClaim("email")
+                trainerId == null ? null : UUID.fromString(trainerId),
+                parsedToken.getClaim("email")
         );
     }
 

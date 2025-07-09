@@ -19,8 +19,8 @@ paths:
     post:
       summary: Register a client using an invitation token
       parameters:
-        - name: token
-          in: query
+        - name: X-Invite-Token
+          in: header
           required: true
           schema:
             type: string
