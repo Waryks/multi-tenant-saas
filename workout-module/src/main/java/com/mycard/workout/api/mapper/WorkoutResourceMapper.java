@@ -6,7 +6,7 @@ import com.mycard.workout.application.command.AssignWorkoutCommand;
 import com.mycard.workout.domain.model.Workout;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "cdi", uses = ExerciseDtoMapper.class)
+@Mapper(componentModel = "jakarta-cdi", uses = ExerciseDtoMapper.class)
 public interface WorkoutResourceMapper {
 
     AssignWorkoutCommand toCommand(AssignWorkoutRequest request);

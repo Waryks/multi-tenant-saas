@@ -6,8 +6,8 @@ import com.mycard.workout.api.dto.WorkoutDTO;
 import com.mycard.workout.application.command.AssignWorkoutCommand;
 import com.mycard.workout.domain.model.Exercise;
 import com.mycard.workout.domain.model.Workout;
-import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @QuarkusTest
 class WorkoutResourceMapperTest {
 
-    @InjectMock
+    @Inject
     WorkoutResourceMapper mapper;
 
     @Test
@@ -48,7 +48,6 @@ class WorkoutResourceMapperTest {
                 request.getScheduledDate(),
                 List.of(new Exercise("Pushup", 3, 10, 30, null))
         );
-        when(mapper.toCommand(any(AssignWorkoutRequest.class))).thenReturn(mockCommand);
 
         AssignWorkoutCommand command = mapper.toCommand(request);
         assertEquals(trainerId, command.getTrainerId());
@@ -83,8 +82,6 @@ class WorkoutResourceMapperTest {
         exerciseDTO.setReps(12);
         exerciseDTO.setRestSeconds(60);
         mockDto.setExercises(List.of(exerciseDTO));
-
-        when(mapper.toDto(any(Workout.class))).thenReturn(mockDto);
 
         WorkoutDTO dto = mapper.toDto(workout);
         assertEquals(id, dto.getId());

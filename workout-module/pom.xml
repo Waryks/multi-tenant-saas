@@ -74,10 +74,6 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-postgresql</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.openapitools</groupId>
-            <artifactId>openapi-generator</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
